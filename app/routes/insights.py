@@ -44,7 +44,7 @@ testInsightData = [
 
 @insights_bp.route('/insights', methods=['GET'])
 def get_insights():
-    return testInsightData
+    #return testInsightData
 
     origin = request.args.get('origin', default='SYD')
     destination = request.args.get('destination', default='MEL')
