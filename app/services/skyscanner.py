@@ -3,7 +3,7 @@ import datetime
 from config import AVIATIONSTACK_API_KEY
 
 def fetch_flight_data(origin, destination, days_to_fetch):
-    url = "http://api.aviationstack.com/v1/flights"
+    url = "https://api.aviationstack.com/v1/flights"#"http://api.aviationstack.com/v1/flights"
     all_results = []
 
     for i in range(days_to_fetch):

@@ -908,9 +908,9 @@ testData = [
 
 @flights_bp.route('/flights', methods=['GET'])
 def get_flights():
-    return testData
-    origin = request.args.get('origin', default='SYD')
-    destination = request.args.get('destination', default='MEL')
+    #return testData
+    origin = request.args.get('origin', default='IND')
+    destination = request.args.get('destination', default='AUS')
     days_to_fetch = int(request.args.get('days', 7))
     data = fetch_flight_data(origin, destination, days_to_fetch)
     return jsonify(data)
