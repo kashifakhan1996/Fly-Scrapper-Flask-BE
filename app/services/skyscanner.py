@@ -1,6 +1,10 @@
+from dotenv import load_dotenv
 import requests
 import datetime
-from config import AVIATIONSTACK_API_KEY
+import os
+
+load_dotenv()  # loads from .env
+api_key = os.getenv("AVIATIONSTACK_API_KEY")
 
 def fetch_flight_data(origin, destination, days_to_fetch):
     url = "https://api.aviationstack.com/v1/flights"#"http://api.aviationstack.com/v1/flights"
@@ -9,7 +13,7 @@ def fetch_flight_data(origin, destination, days_to_fetch):
     for i in range(days_to_fetch):
         date = (datetime.datetime.now() + datetime.timedelta(days=i)).strftime("%Y-%m-%d")
         params = {
-            "access_key": AVIATIONSTACK_API_KEY,
+            "access_key": api_key,
             "dep_iata": origin,
             "arr_iata": destination,
             "flight_date": date
