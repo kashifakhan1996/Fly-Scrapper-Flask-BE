@@ -7,23 +7,24 @@ load_dotenv()  # loads from .env
 api_key = os.getenv("AVIATIONSTACK_API_KEY")
 
 def fetch_flight_data(origin, destination, days_to_fetch):
-    url = "https://api.aviationstack.com/v1/flights"#"http://api.aviationstack.com/v1/flights"
     all_results = []
+    url = f"https://api.aviationstack.com/v1/flights?access_key={api_key}"
+
+#response = requests.get(url, params=querystring)
 
     for i in range(days_to_fetch):
         date = (datetime.datetime.now() + datetime.timedelta(days=i)).strftime("%Y-%m-%d")
         params = {
-            "access_key": api_key,
             "dep_iata": origin,
             "arr_iata": destination,
             "flight_date": date
         }
+        #querystring = {"iataCode":origin,"type":"departure","date":date}
 
         try:
             response = requests.get(url, params=params)
             response.raise_for_status()
             data = response.json()
-
             for flight in data.get("data", []):
                 all_results.append({
                     "Flight Date": flight.get("flight_date"),
