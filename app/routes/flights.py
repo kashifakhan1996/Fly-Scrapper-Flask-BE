@@ -908,7 +908,7 @@ testData = [
 
 @flights_bp.route('/flights', methods=['GET'])
 def get_flights():
-    #return testData
+    return testData
     origin = request.args.get('origin', default='IND')
     destination = request.args.get('destination', default='AUS')
     days_to_fetch = int(request.args.get('days', 7))
